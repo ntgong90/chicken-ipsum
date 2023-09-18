@@ -1,22 +1,8 @@
-export const generateChicken = () => {
-  const WORDS = [
-    "puk",
-    "pukaaak",
-    "cluck",
-    "cluck-cluck-cluck",
-    "cluckity",
-    "bwak",
-    "waaak",
-    "bok",
-    "bwok",
-    "cluck-a-buh-gawk",
-    "cock-a-doodle-doo",
-    "bwwwaaaaaaaaaak",
-    "gobble-gobble",
-    "honk",
-  ];
-  const PUNCTUATIONS = [".", "...", "!", "?"];
-  const PARAGRAPH_SIZES = [15, 30, 75];
+export const generateWords = () => {
+  //create list of words
+  const vulgarWords = ['fuck you', 'bitch','cunt','motherfucker','shitstain','ogre','limpdick','gumby','paperhanded bitch','ass whipe', 'plonker'],
+      censoredWords = ['f**k you', 'b**ch','cunt','motherf***er','sh**stain','ogre','limpd**k','gumby','paperhanded b**ch','a*s whipe', 'plonker'],
+    PARAGRAPH_SIZES = [15, 30, 75];
 
   const numberOfWords =
     PARAGRAPH_SIZES[Math.floor(Math.random() * PARAGRAPH_SIZES.length)];
@@ -26,21 +12,9 @@ export const generateChicken = () => {
   let previousWordHadPunctuation = false;
   for (let i = 0; i < numberOfWords; i++) {
     // pick a random word
-    let word = WORDS[Math.floor(Math.random() * WORDS.length)];
+    let word = vulgarWords[Math.floor(Math.random() * vulgarWords.length)];
 
-    // optionally add punctuation
-    // note: always add punctuation if it's the last word.
     const shouldAddPunctuation = i === numberOfWords - 1 || Math.random() > 0.9;
-    const punctuation = shouldAddPunctuation
-      ? PUNCTUATIONS[Math.floor(Math.random() * PUNCTUATIONS.length)]
-      : "";
-    word = word + punctuation;
-
-    // optionally capitalize the word
-    // note: always capitalize if it's the first words, or if preceded by punctuation
-    const shouldCapitalize =
-      i === 0 || previousWordHadPunctuation || Math.random() > 0.3;
-    word = shouldCapitalize ? word[0].toUpperCase() + word.slice(1) : word;
 
     // preserve info for next iteration
     previousWordHadPunctuation = shouldAddPunctuation;
@@ -51,6 +25,17 @@ export const generateChicken = () => {
     // if not last one, add a space
     paragraph = i === numberOfWords - 1 ? paragraph : paragraph + " ";
   }
-
   return paragraph;
 };
+
+export const clearOutputText = () => {
+  const defualtText = 'Lorem ipsum motherfu..';
+  return defualtText;
+}
+
+export const copyText = () => {
+  let copiedText = document.getElementById('outputText').innerText || 'Nothing copied';
+				navigator.clipboard.writeText(copiedText);
+				alert('Copied to Clipboard');
+        return copiedText;
+}

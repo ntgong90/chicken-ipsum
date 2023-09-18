@@ -1,11 +1,12 @@
 export const GithubLogo = () => {
   return (
-    <a
-      href="https://github.com/sebastiancarlos/chicken-ipsum"
+    //Link to gihub page
+    <a       
+      href="https://github.com/ntgong90/chicken-ipsum"
       rel="noopener noreferrer"
       target="_blank"
       className="github-link"
-      title="Go to Github page"
+      title="Github"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
