@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useState,useRef, useEffect} from "react";
 import "./App.css";
 import { generateWords, clearOutputText, copyText } from "./utils";
 import { GithubLogo } from "./GithubLogo";
 
 function App() {
-  const [output, setVulgar] = useState<string | null>(null);
-
+  const [output, setVulgar] = useState<string | null>('Lorem ipsum motherfu..');
+  const ref = useRef(null);
+  //still don't understand useEffect but will discuss with Mike
+  useEffect(() => {
+    const element = ref.current;
+	console.log(ref.current.value);
+  }, []);
+  
   return (
-    
     <div className="App">
       <h1>Vulgar Ipsum</h1>
       <GithubLogo />
@@ -15,18 +20,20 @@ function App() {
 			<tbody>
       <tr id='dropDown'>
 					<td>
+
 						<form id="dropDownForm">
 							<label htmlFor='selectionDropDown' id="dropDownTitle"> {/* React uses htmlFor istead of for  */}
 								<strong> Word Count: </strong>
+								{/* Drop down selection here to pick an option out of specified list */}
+									<select ref={ref} id='selectionDropDown'>
+										<option value='1'>0-50</option>
+										<option value='2'>51-200</option>
+										<option value='3'>201-500</option>
+										<option value='4'>501-1500</option>
+										<option value='5'>1500+</option>
+										
+									</select>
 							</label>
-							<select id="selectionDropDown" name="wordDropDownList">
-								<option className='tobeSelected' id="selection-0-50" value='1'>0-50</option>
-								<option className='tobeSelected' id="selection-51-200" value='2'>51-200</option>
-								<option className='tobeSelected' id="selection-201-500" value='3'>201-500</option>
-								<option className='tobeSelected' id="selection-501-1500" value='4'>501-1500</option>
-								<option className='tobeSelected' id="selection-plus" value='5'>1500+</option>
-							</select>
-
 						</form>
 					</td>
 					<td>
@@ -49,7 +56,7 @@ function App() {
 					<td><button onClick={() => setVulgar(copyText())}>Copy to Clipboard</button></td>
 				</tr>
 				<tr id="outputBox">
-					<td id="outputText">Lorem ipsum motherfu..{output}</td>
+					<td id="outputText">{output}</td>
 				</tr>
         <tr>
         </tr>
@@ -58,5 +65,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;

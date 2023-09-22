@@ -82,6 +82,18 @@ button:hover{
   align-content: space-evenly;
 }
 
+#selectionDropDown, .tobeSelected{
+  background-color: #9DD5D4;
+  border-radius: 5px;
+  border: 2px #089489;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+  font-size:large;
+  margin: 0.5em;
+  color:#089489;
+}
+
+
 #dropDownTitle:hover{
   cursor: pointer;
 }
