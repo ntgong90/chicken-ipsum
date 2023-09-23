@@ -1,21 +1,26 @@
+/* You can just import the Google font here */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;1,6..12,300&display=swap');
+
 :root {
-  border: solid 1px red;
-  font-family: 'Nunito Sans', sans-serif;
+  /* border: solid 1px blue; */
+  font-family:'Nunito Sans', sans-serif;
   font-size: 16px;
   color-scheme: light dark;
   background-color: #3EBFBB;
-  font-synthesis: none;
+  /* font-synthesis: none; */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  height: 100%;
 
 }
 
 h1 {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family:'Nunito Sans', sans-serif;
   text-align: center;
   letter-spacing: 1px;
+  font-size: 45px;
   font-weight: bolder;
   color:#505050;
 
@@ -43,11 +48,13 @@ table {
 
 button{
   background-color: #9DD5D4;
+  color:#505050;
   border-radius: 5px;
   border: 2px #089489;
   font-family: 'Nunito Sans', sans-serif;
   font-size: large;
   margin: 0.5em;
+  
 }
 
 button:hover{
@@ -70,9 +77,11 @@ button:hover{
   padding: 1em;
   background-color: #9DD5D4;
   overflow: auto;
-  border: solid 1px red;
-  width: 75em;
-  height: 50em;
+  /* border: solid 1px red; */
+  width: 80em;
+  height: 70em;
+  /* IN REACT CSS-STYLE FOR \n line break */
+  white-space: pre-line;
 }
 
 #selection, #dropDown, #checkMarkBox{

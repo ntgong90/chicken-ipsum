@@ -1,14 +1,19 @@
 export const generateWords = () => {
-  //create list of words
+  //create lists of words
   const vulgarWords = ['fuck you', 'bitch','cunt','motherfucker','shitstain','ogre','limpdick','gumby','paperhanded bitch','ass whipe', 'plonker'],
       censoredWords = ['f**k you', 'b**ch','cunt','motherf***er','sh**stain','ogre','limpd**k','gumby','paperhanded b**ch','a*s whipe', 'plonker'];
 
+  //define number of defualt words
   let numberOfOutputWords = 0;
+
+  //status of Censored button
+  const isChecked = document.getElementById('censoredCheck').checked;
 
     function numberInterval(min:number, max:number){
       return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
+    //chunks an array input and outputs chunked array 
     function makesParagraphs(listOfWords:any[]){
       const chunkedArray = [];
         for(let i = 0; i< listOfWords.length; i+= 150){
@@ -18,58 +23,46 @@ export const generateWords = () => {
       return chunkedArray.map(wordGroup => wordGroup.join(' '));
     }
     
-
-    if(document.getElementById('selectionDropDown').value == '1'){
-      numberOfOutputWords = numberInterval(0,50);
-      console.log(numberOfOutputWords)
-    }
-    if(document.getElementById('selectionDropDown').value == '2'){
-      numberOfOutputWords = numberInterval(51,200);
-      console.log(numberOfOutputWords)
-    }
-    if(document.getElementById('selectionDropDown').value == '3'){
-      numberOfOutputWords = numberInterval(201,500);
-      console.log(numberOfOutputWords)
-    }
-    if(document.getElementById('selectionDropDown').value == '4'){
-      numberOfOutputWords = numberInterval(501,1500);
-      console.log(numberOfOutputWords)
-    }
-    if(document.getElementById('selectionDropDown').value == '5'){
-      numberOfOutputWords = numberInterval(1500,3000);
-      console.log(numberOfOutputWords)
+    //sets value of numberOfOutputWords based on selectionDropDown value
+    //hacky way selecting DOM
+    switch(document.getElementById('selectionDropDown').value){
+      case '1': numberOfOutputWords = numberInterval(0,50);
+      break;
+      case '2': numberOfOutputWords = numberInterval(51,200);
+      break;
+      case '3': numberOfOutputWords = numberInterval(201,500);
+      break;
+      case '4': numberOfOutputWords = numberInterval(501,1500);
+      break;
+      case '5': numberOfOutputWords = numberInterval(1500,3000);
+      break;
+      default: 0;
     }
 
+    //generates array of random length with number input for vulgar words
+    function generateVulgarWords(numberOfWords:number){
+      const outputWords = [];
+    
+      for(let i = 0; i < numberOfWords; i++){
+        let randomIndex = Math.floor(Math.random()*vulgarWords.length);
+        outputWords.push(vulgarWords[randomIndex]);
+      }
+      return outputWords;
+    }
 
-
-    function generateWords(numberOfWords:number){
+    //for censored words
+    function generateCensoredWords(numberOfWords:number){
       const outputWords = [];
     
       for(let i = 0; i < numberOfWords; i++){
         let randomIndex = Math.floor(Math.random()*censoredWords.length);
         outputWords.push(censoredWords[randomIndex]);
-        if(document.getElementById('selectionDropDown').value == '1'){
-          let randomIndex = Math.floor(Math.random()*censoredWords.length);
-          outputWords.push(vulgarWords[randomIndex]);
-        }
-        if(document.getElementById('selectionDropDown').value == '2'){
-          let randomIndex = Math.floor(Math.random()*censoredWords.length);
-          outputWords.push(vulgarWords[randomIndex]);
-        }
       }
       return outputWords;
     }
-    console.log(document.getElementById('selectionDropDown').value)
 
-
-
-
-
-    return generateWords(numberOfOutputWords).length > 150 ?  makesParagraphs(generateWords(numberOfOutputWords)).join('\n\n') : 'test';
-    
-    ;
-  //return generateWords();
-
+    return isChecked ? makesParagraphs(generateCensoredWords(numberOfOutputWords)).join('\n\n') : 
+    makesParagraphs(generateVulgarWords(numberOfOutputWords)).join('\n\n');
 };
 
 ////clears randomly by outputing defaultText string
