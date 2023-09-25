@@ -78,8 +78,8 @@ button:hover{
   background-color: #9DD5D4;
   overflow: auto;
   /* border: solid 1px red; */
-  width: 80em;
-  height: 70em;
+  width: 75em;
+  height: 47em;
   /* IN REACT CSS-STYLE FOR \n line break */
   white-space: pre-line;
 }
@@ -103,10 +103,16 @@ button:hover{
 }
 
 
-#dropDownTitle:hover{
+#selectionDropDown:hover{
+  background-color:#089489;
+  color: #9DD5D4;
   cursor: pointer;
 }
 
+/* This is not getting inherited */
+.valueSelection:hover{
+  cursor: pointer;
+}
 
 #radioButtons{
   border-radius: 5px;

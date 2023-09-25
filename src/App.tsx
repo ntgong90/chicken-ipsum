@@ -26,7 +26,7 @@ function App() {
 								<strong> Word Count: </strong>
 								{/* Drop down selection here to pick an option out of specified list */}
 									<select ref={ref} id='selectionDropDown'>
-										<option value='1'>0-50</option>
+										<option value='1' className='valueSelection'>0-50</option>
 										<option value='2'>51-200</option>
 										<option value='3'>201-500</option>
 										<option value='4'>501-1500</option>
