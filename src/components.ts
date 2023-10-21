@@ -1,5 +1,5 @@
 export const generateWords = () => {
-  //create lists of words
+  //Locally stored lists of words to randomly generate: one vulgar list, one censored list
   const vulgarWords = ['fuck you', 'bitch','cunt','motherfucker','shitstain','ogre','limpdick','gumby','paperhanded bitch','ass whipe', 'plonker'],
       censoredWords = ['f**k you', 'b**ch','cunt','motherf***er','sh**stain','ogre','limpd**k','gumby','paperhanded b**ch','a*s whipe', 'plonker'];
 
@@ -64,17 +64,3 @@ export const generateWords = () => {
     return isChecked ? makesParagraphs(generateCensoredWords(numberOfOutputWords)).join('\n\n') : 
     makesParagraphs(generateVulgarWords(numberOfOutputWords)).join('\n\n');
 };
-
-////clears randomly by outputing defaultText string
-export const clearOutputText = () => {
-  const defualtText = 'Lorem ipsum motherfu..';
-  return defualtText;
-}
-
-//copies text to clipboard
-export const copyText = () => {
-  let copiedText = document.getElementById('outputText').innerText || 'Nothing copied';
-				navigator.clipboard.writeText(copiedText);
-				alert('Copied to Clipboard');
-        return copiedText;
-}
