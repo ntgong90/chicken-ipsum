@@ -119,7 +119,7 @@ function App() {
 					<form id="dropDownForm">
 						<label htmlFor='selectionDropDown' id="dropDownTitle">
 							<strong> Word Count: </strong>
-							<select id='selectionDropDown' onChange={setValue}>
+							<select id='optionList' onChange={setValue}>
 								<option value='1'>0-50</option>
 								<option value='2'>51-200</option>
 								<option value='3'>201-500</option>

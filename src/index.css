@@ -1,19 +1,17 @@
-/* You can just import the Google font here */
+/* Immport Google here */
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;1,6..12,300&display=swap');
 
+
 :root {
-  /* border: solid 1px blue; */
   font-family:'Nunito Sans', sans-serif;
   font-size: 16px;
   color-scheme: light dark;
   background-color: #3EBFBB;
-  /* font-synthesis: none; */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   height: 100%;
-
 }
 
 h1 {
@@ -36,11 +34,11 @@ a {
   color: inherit;
 }
 
-a:hover {
+a:hover{
   color: #089489;
 }
 
-table {
+table{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +75,6 @@ button:hover{
   padding: 1em;
   background-color: #9DD5D4;
   overflow: auto;
-  /* border: solid 1px red; */
   width: 75em;
   height: 47em;
   /* IN REACT CSS-STYLE FOR \n line break */
@@ -91,7 +88,7 @@ button:hover{
   align-content: space-evenly;
 }
 
-#selectionDropDown, .tobeSelected{
+#optionList, .tobeSelected{
   background-color: #9DD5D4;
   border-radius: 5px;
   border: 2px #089489;
@@ -102,8 +99,7 @@ button:hover{
   color:#089489;
 }
 
-
-#selectionDropDown:hover{
+#optionList:hover{
   background-color:#089489;
   color: #9DD5D4;
   cursor: pointer;
@@ -112,6 +108,10 @@ button:hover{
 /* This is not getting inherited */
 .valueSelection:hover{
   cursor: pointer;
+}
+
+option:hover{
+  background-color: yellow;
 }
 
 #radioButtons{
@@ -139,6 +139,7 @@ button:hover{
   color:#089489;
 }
 
+/* Scrollbar properties */
 ::-webkit-scrollbar{
   width: 15px;
 }
