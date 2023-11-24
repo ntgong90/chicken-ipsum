@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { GithubLogo } from "./GithubLogo";
+import { Title } from "./components/Title"
+//import { WordSelection } from "./components/WordSelection";
+import { ClearText } from "./components/ClearText";
 import "./App.css";
 
 //Main component - no added components
@@ -36,9 +39,9 @@ function App() {
 	}
 
     //DEBUGGING:debugging method
-    // const consoleLogFile = () => {
-	// 	console.log(selection);
-	// }
+    const consoleLogFile = () => {
+		console.log(selection);
+	}
 
 	const generateWords = () => {
 		//Locally stored lists of words to randomly generate: one vulgar list, one censored list
@@ -106,16 +109,17 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Vulgar Ipsum</h1>
+	  <Title/>
       <GithubLogo />
-		{/*DEGUGGING:This button is for debugging */}
-		{/* <button className="button1" id='displayDataButton' onClick={consoleLogFile}>
+		{/* DEGUGGING:This button is for debugging  */}
+		<button className="button1" id='displayDataButton' onClick={consoleLogFile}>
 			Console Log 
-        </button> */}
+        </button>
       <table id="table">
 		<tbody>
       		<tr id='dropDown'>
 				<td>
+					{/* <WordSelection/> */}
 					<form id="dropDownForm">
 						<label htmlFor='selectionDropDown' id="dropDownTitle">
 							<strong> Word Count: </strong>
@@ -148,6 +152,7 @@ function App() {
 					<button onClick={() => setVulgar(generateWords())}>Generate</button>
 				</td>
 				<td>
+					{/* <ClearText/> */}
 					<button onClick={() => clearOutputText()}>Clear</button>
 				</td>
 				<td>
