@@ -1,14 +1,18 @@
 import { useState } from "react";
 
-const defaultSelection = '1';
-const [selection, setSelection] = useState(defaultSelection)
 
-//sets the value of the selection state
-const setValue = (event:any) => {
-    setSelection(event.target.value);
-}
 
 export const WordSelection = () => {
+
+    const defaultSelection = '1',
+          [selection, setSelection] = useState(defaultSelection)
+
+    //sets the value of the selection state
+    const setValue = (event:any) => {
+        setSelection(event.target.value);
+    }
+
+
     return (
     <form id="dropDownForm">
         <label htmlFor='selectionDropDown' id="dropDownTitle">
@@ -24,3 +28,4 @@ export const WordSelection = () => {
     </form>
     );
 }
+//real tabs for two spacing for tabs is a gumby move!

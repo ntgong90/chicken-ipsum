@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { GithubLogo } from "./GithubLogo";
 import { Title } from "./components/Title"
 //import { WordSelection } from "./components/WordSelection";
@@ -9,7 +9,7 @@ import "./App.css";
 function App() {
 
   //define defualt states for useState 
-  const defaultVerbiage = 'Lorem ipsum motherfu..',
+  const defaultVerbiage = 'Lorem ipsum motherfu..213413123',
 		defaultSelection = '1',
 		defaultCensor = false;
 
@@ -18,9 +18,9 @@ function App() {
   		[censored, setCensored] = useState(defaultCensor);
 
 	//sets output back to defualt state
-	const clearOutputText = () => {
-		setVulgar(defaultVerbiage);
-	}
+	// const clearOutputText = () => {
+	// 	setVulgar(defaultVerbiage);
+	// }
   
 	//copyText - copies stored state of 'output' to clipboard
 	const copyText = () => {
@@ -37,6 +37,10 @@ function App() {
 	const setCensor = (event:any) => {
 		setCensored(event.target.checked);
 	}
+
+
+	//useRef for child compoenent?
+	const childRef = useRef();
 
     //DEBUGGING:debugging method
     const consoleLogFile = () => {
@@ -109,7 +113,7 @@ function App() {
 
   return (
     <div className="App">
-	  <Title/>
+	  <Title title="Vulgar Ipsum"/>
       <GithubLogo />
 		{/* DEGUGGING:This button is for debugging  */}
 		<button className="button1" id='displayDataButton' onClick={consoleLogFile}>
@@ -119,7 +123,8 @@ function App() {
 		<tbody>
       		<tr id='dropDown'>
 				<td>
-					{/* <WordSelection/> */}
+					{/* <WordSelection setValue={setValue}/> */}
+
 					<form id="dropDownForm">
 						<label htmlFor='selectionDropDown' id="dropDownTitle">
 							<strong> Word Count: </strong>
@@ -152,8 +157,9 @@ function App() {
 					<button onClick={() => setVulgar(generateWords())}>Generate</button>
 				</td>
 				<td>
-					{/* <ClearText/> */}
-					<button onClick={() => clearOutputText()}>Clear</button>
+					{/* Has to bubble up to parent via passing in props */}
+					<ClearText setVulgar={setVulgar} defaultVerbiage={defaultVerbiage} />
+					{/* <button onClick={() => clearOutputText()}>Clear</button> */}
 				</td>
 				<td>
 					<button onClick={() => copyText()}>Copy to Clipboard</button>

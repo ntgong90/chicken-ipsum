@@ -1,16 +1,5 @@
-import { useState } from "react";
-
-const defaultVerbiage = 'Lorem ipsum motherfu..',
-      [output, setVulgar] = useState(defaultVerbiage);
-
-//sets output back to defualt state
-const clearOutputText = () => {
-    setVulgar(defaultVerbiage);
-}
-
-export const ClearText = () => {
+export function ClearText({setVulgar, defaultVerbiage}:{setVulgar:Function, defaultVerbiage:String}){
     return (
-        <button onClick={() => clearOutputText()}>Clear</button>
+        <button onClick={() => setVulgar(defaultVerbiage)}>Clear</button>
     );
-
-}
+};
