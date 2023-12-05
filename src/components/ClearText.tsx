@@ -1,5 +1,5 @@
-export function ClearText({setVulgar, defaultVerbiage}:{setVulgar:Function, defaultVerbiage:String}){
+export const ClearText = ({clearText, defaultVerbiage}:Readonly<{clearText:Function, defaultVerbiage:string}>) => {
     return (
-        <button onClick={() => setVulgar(defaultVerbiage)}>Clear</button>
+        <button onClick={() => clearText(defaultVerbiage)}>Clear</button>
     );
 };

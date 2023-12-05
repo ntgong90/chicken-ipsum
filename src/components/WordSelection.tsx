@@ -1,17 +1,4 @@
-import { useState } from "react";
-
-
-
 export const WordSelection = () => {
-
-    const defaultSelection = '1',
-          [selection, setSelection] = useState(defaultSelection)
-
-    //sets the value of the selection state
-    const setValue = (event:any) => {
-        setSelection(event.target.value);
-    }
-
 
     return (
     <form id="dropDownForm">

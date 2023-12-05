@@ -4,29 +4,26 @@ import { Title } from "./components/Title"
 //import { WordSelection } from "./components/WordSelection";
 import { ClearText } from "./components/ClearText";
 import "./App.css";
+import { CopyToClipboard } from "./components/CopyClipboard";
 
 //Main component - no added components
 function App() {
 
   //define defualt states for useState 
-  const defaultVerbiage = 'Lorem ipsum motherfu..213413123',
+  const defaultVerbiage = 'Lorem ipsum motherfu..',
 		defaultSelection = '1',
 		defaultCensor = false;
 
-  const [output, setVulgar] = useState(defaultVerbiage),
-		[selection, setSelection] = useState(defaultSelection),
-  		[censored, setCensored] = useState(defaultCensor);
+  const [vulgar, setVulgar] = useState(defaultVerbiage),
+    [selection, setSelection] = useState(defaultSelection),
+    [censored, setCensored] = useState(defaultCensor);
 
-	//sets output back to defualt state
-	// const clearOutputText = () => {
-	// 	setVulgar(defaultVerbiage);
-	// }
-  
+
 	//copyText - copies stored state of 'output' to clipboard
 	const copyText = () => {
-		navigator.clipboard.writeText(output);
+		navigator.clipboard.writeText(vulgar);
 		alert('Copied to Clipboard');
-		return output;
+		return vulgar;
 	}
 
 	//sets the value of the selection state
@@ -37,10 +34,6 @@ function App() {
 	const setCensor = (event:any) => {
 		setCensored(event.target.checked);
 	}
-
-
-	//useRef for child compoenent?
-	const childRef = useRef();
 
     //DEBUGGING:debugging method
     const consoleLogFile = () => {
@@ -158,15 +151,14 @@ function App() {
 				</td>
 				<td>
 					{/* Has to bubble up to parent via passing in props */}
-					<ClearText setVulgar={setVulgar} defaultVerbiage={defaultVerbiage} />
-					{/* <button onClick={() => clearOutputText()}>Clear</button> */}
+					<ClearText clearText={setVulgar} defaultVerbiage={defaultVerbiage} />
 				</td>
-				<td>
-					<button onClick={() => copyText()}>Copy to Clipboard</button>
-				</td>
+        <td>
+          <CopyToClipboard copy={copyText} vulgarOutput={vulgar} />
+        </td>
 			</tr>
 			<tr id="outputBox">
-				<td id="outputText">{output}</td>
+				<td id="outputText">{vulgar}</td>
 			</tr>
 		</tbody>
       </table>
