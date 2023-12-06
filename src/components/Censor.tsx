@@ -1,4 +1,2 @@
 
-
-
 //censor componenet
