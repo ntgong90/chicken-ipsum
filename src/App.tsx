@@ -5,6 +5,8 @@ import { Title } from "./components/Title"
 import { ClearText } from "./components/ClearText";
 import "./App.css";
 import { CopyToClipboard } from "./components/CopyClipboard";
+import { GenerateWords } from "./components/GenerateWords";
+import { WordSelection } from "./components/WordSelection";
 
 //Main component - no added components
 function App() {
@@ -17,7 +19,6 @@ function App() {
   const [vulgar, setVulgar] = useState(defaultVerbiage),
     [selection, setSelection] = useState(defaultSelection),
     [censored, setCensored] = useState(defaultCensor);
-
 
 	//copyText - copies stored state of 'output' to clipboard
 	const copyText = () => {
@@ -35,8 +36,8 @@ function App() {
 		setCensored(event.target.checked);
 	}
 
-    //DEBUGGING:debugging method
-    const consoleLogFile = () => {
+  //DEBUGGING:debugging method
+  const consoleLogFile = () => {
 		console.log(selection);
 	}
 
@@ -113,54 +114,61 @@ function App() {
 			Console Log 
         </button>
       <table id="table">
-		<tbody>
-      		<tr id='dropDown'>
-				<td>
-					{/* <WordSelection setValue={setValue}/> */}
+				<tbody>
+							<tr id='dropDown'>
+						<td>
+							<WordSelection setOption={() => setValue(selection)} selection={selection}/>
 
-					<form id="dropDownForm">
-						<label htmlFor='selectionDropDown' id="dropDownTitle">
-							<strong> Word Count: </strong>
-							<select id='optionList' onChange={setValue}>
-								<option value='1'>0-50</option>
-								<option value='2'>51-200</option>
-								<option value='3'>201-500</option>
-								<option value='4'>501-1500</option>
-								<option value='5'>1500+</option>
-							</select>
-						</label>
-					</form>
-				</td>
-				<td>
-					<label htmlFor='censoredCheck' id="censoredTitle">
-						<strong> Censored </strong>
-					</label>
-				</td>
-				<td>
-					<div className="container">
-						<label className="switch" htmlFor="censoredCheck">
-							<input type="checkbox" id="censoredCheck" onChange={setCensor}/>
-							<div className="slider round"></div>
-						</label>
-					</div>
-				</td>
-			</tr>
-			<tr id='navigationButtons'>
-				<td>
-					<button onClick={() => setVulgar(generateWords())}>Generate</button>
-				</td>
-				<td>
-					{/* Has to bubble up to parent via passing in props */}
-					<ClearText clearText={setVulgar} defaultVerbiage={defaultVerbiage} />
-				</td>
-        <td>
-          <CopyToClipboard copy={copyText} vulgarOutput={vulgar} />
-        </td>
-			</tr>
-			<tr id="outputBox">
-				<td id="outputText">{vulgar}</td>
-			</tr>
-		</tbody>
+							<form id="dropDownForm">
+								<label htmlFor='selectionDropDown' id="dropDownTitle">
+									<strong> Word Count: </strong>
+									<select id='optionList' onChange={setValue}>
+										<option value='1'>0-50</option>
+										<option value='2'>51-200</option>
+										<option value='3'>201-500</option>
+										<option value='4'>501-1500</option>
+										<option value='5'>1500+</option>
+									</select>
+								</label>
+							</form>
+						</td>
+						<td>
+							<label htmlFor='censoredCheck' id="censoredTitle">
+								<strong> Censored </strong>
+							</label>
+						</td>
+						<td>
+							<div className="container">
+								<label className="switch" htmlFor="censoredCheck">
+									<input type="checkbox" id="censoredCheck" onChange={setCensor}/>
+									<div className="slider round"></div>
+								</label>
+							</div>
+						</td>
+					</tr>
+					<tr id='navigationButtons'>
+						<td>
+							{/* Has to bubble up to parent via passing in props */}
+							{/* <button onClick={() => setVulgar(generateWords())}>Generate</button> */}
+							<GenerateWords 
+								randomWordSet={setVulgar} 
+								generate={generateWords}/>
+						</td>
+						<td>
+							<ClearText 
+								clearTextToDefault={setVulgar} 
+								defaultVerbiage={defaultVerbiage}/>
+						</td>
+						<td>
+							<CopyToClipboard 
+								copy={copyText} 
+								vulgarOutput={vulgar}/>
+						</td>
+					</tr>
+					<tr id="outputBox">
+						<td id="outputText">{vulgar}</td>
+					</tr>
+				</tbody>
       </table>
     </div>
   );

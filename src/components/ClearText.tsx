@@ -1,5 +1,5 @@
-export const ClearText = ({clearText, defaultVerbiage}:Readonly<{clearText:Function, defaultVerbiage:string}>) => {
+export const ClearText = ({clearTextToDefault, defaultVerbiage}:Readonly<{clearTextToDefault:Function, defaultVerbiage:string}>) => {
     return (
-        <button onClick={() => clearText(defaultVerbiage)}>Clear</button>
+   	 <button onClick={() => clearTextToDefault(defaultVerbiage)}>Clear</button>
     );
 };
