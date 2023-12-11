@@ -27,14 +27,10 @@ function App() {
 		return vulgar;
 	}
 
-	//sets the value of the selection state
-	const setValue = (event:any) => {
-		setSelection(event.target.value);
-	}	
-	//set the boolean of the censor state
-	const setCensor = (event:any) => {
-		setCensored(event.target.checked);
-	}
+	//callback? needed fro child->parent props
+  const handleSelectChange = (value:any) => {
+    setSelection(value);
+  };
 
   //DEBUGGING:debugging method
   const consoleLogFile = () => {
@@ -108,21 +104,21 @@ function App() {
   return (
     <div className="App">
 	  <Title title="Vulgar Ipsum"/>
-      <GithubLogo />
+    <GithubLogo/>
 		{/* DEGUGGING:This button is for debugging  */}
-		<button className="button1" id='displayDataButton' onClick={consoleLogFile}>
+		{/* <button className="button1" id='displayDataButton' onClick={consoleLogFile}>
 			Console Log 
-        </button>
+        </button> */}
       <table id="table">
 				<tbody>
 							<tr id='dropDown'>
 						<td>
-							<WordSelection setOption={() => setValue(selection)} selection={selection}/>
-
-							<form id="dropDownForm">
+							<WordSelection onSelectChange={handleSelectChange}/>
+							{/* <form id="dropDownForm">
 								<label htmlFor='selectionDropDown' id="dropDownTitle">
 									<strong> Word Count: </strong>
-									<select id='optionList' onChange={setValue}>
+									<select id='optionList' onChange={
+										(event) => setSelection(event.target.value)}>
 										<option value='1'>0-50</option>
 										<option value='2'>51-200</option>
 										<option value='3'>201-500</option>
@@ -130,7 +126,7 @@ function App() {
 										<option value='5'>1500+</option>
 									</select>
 								</label>
-							</form>
+							</form> */}
 						</td>
 						<td>
 							<label htmlFor='censoredCheck' id="censoredTitle">
@@ -140,7 +136,9 @@ function App() {
 						<td>
 							<div className="container">
 								<label className="switch" htmlFor="censoredCheck">
-									<input type="checkbox" id="censoredCheck" onChange={setCensor}/>
+									<input type="checkbox" id="censoredCheck" onChange={
+										(event) => setCensored(event.target.checked)
+									}/>
 									<div className="slider round"></div>
 								</label>
 							</div>
@@ -148,8 +146,6 @@ function App() {
 					</tr>
 					<tr id='navigationButtons'>
 						<td>
-							{/* Has to bubble up to parent via passing in props */}
-							{/* <button onClick={() => setVulgar(generateWords())}>Generate</button> */}
 							<GenerateWords 
 								randomWordSet={setVulgar} 
 								generate={generateWords}/>

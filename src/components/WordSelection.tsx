@@ -1,9 +1,15 @@
-export const WordSelection = ({setOption, selection}:Readonly<{setOption:Function, selection:string}>) => {
+export const WordSelection = ({onSelectChange}:Readonly<{onSelectChange:Function}>) => {
+	//best practices?
+	//callback function passing props to parent
+	const handleChange = (event:any) => {
+			onSelectChange(event.target.value);
+		};
+		
     return (
     <form id="dropDownForm">
         <label htmlFor='selectionDropDown' id="dropDownTitle">
-            <strong> Word Count Test: </strong>
-            <select id='optionList' onChange={() => setOption}>
+            <strong> Word Count: </strong>
+            <select id='optionList' onChange={handleChange}>
 							<option value='1'>0-50</option>
 							<option value='2'>51-200</option>
 							<option value='3'>201-500</option>
@@ -13,4 +19,4 @@ export const WordSelection = ({setOption, selection}:Readonly<{setOption:Functio
         </label>
     </form>
     );
-}
+};
