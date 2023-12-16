@@ -1,12 +1,13 @@
 import { useState, useRef } from "react";
 import { GithubLogo } from "./GithubLogo";
 import { Title } from "./components/Title"
-//import { WordSelection } from "./components/WordSelection";
 import { ClearText } from "./components/ClearText";
-import "./App.css";
 import { CopyToClipboard } from "./components/CopyClipboard";
 import { GenerateWords } from "./components/GenerateWords";
 import { WordSelection } from "./components/WordSelection";
+import "./App.css"; //import before or after component imports?
+import { Censor } from "./components/CensoredTitle";
+import { Checkbox } from "./components/CensoredCheckBox";
 
 //Main component - no added components
 function App() {
@@ -31,6 +32,12 @@ function App() {
   const handleSelectChange = (value:any) => {
     setSelection(value);
   };
+
+  //callback? needed fro child->parent props
+  const handleCheckBoxMarked = (value:any) => {
+    setCensored(value);
+  }
+
 
   //DEBUGGING:debugging method
   const consoleLogFile = () => {
@@ -113,35 +120,16 @@ function App() {
 				<tbody>
 							<tr id='dropDown'>
 						<td>
-							<WordSelection onSelectChange={handleSelectChange}/>
-							{/* <form id="dropDownForm">
-								<label htmlFor='selectionDropDown' id="dropDownTitle">
-									<strong> Word Count: </strong>
-									<select id='optionList' onChange={
-										(event) => setSelection(event.target.value)}>
-										<option value='1'>0-50</option>
-										<option value='2'>51-200</option>
-										<option value='3'>201-500</option>
-										<option value='4'>501-1500</option>
-										<option value='5'>1500+</option>
-									</select>
-								</label>
-							</form> */}
+							<WordSelection 
+                onSelectChange={handleSelectChange}/>
 						</td>
 						<td>
-							<label htmlFor='censoredCheck' id="censoredTitle">
-								<strong> Censored </strong>
-							</label>
+              <Censor 
+                censorTitle="Censored"/>
 						</td>
 						<td>
-							<div className="container">
-								<label className="switch" htmlFor="censoredCheck">
-									<input type="checkbox" id="censoredCheck" onChange={
-										(event) => setCensored(event.target.checked)
-									}/>
-									<div className="slider round"></div>
-								</label>
-							</div>
+              <Checkbox 
+                checkBoxMarked={handleCheckBoxMarked}/>
 						</td>
 					</tr>
 					<tr id='navigationButtons'>
