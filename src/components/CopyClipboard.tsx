@@ -1,6 +1,13 @@
-export const CopyToClipboard = ({copy,vulgarOutput}:Readonly<{copy:Function,vulgarOutput:string}>) => {
+export const CopyToClipboard = ({vulgarOutput}:{vulgarOutput:string}) => {
+
+	const copyText = (vulgar:string) => {
+		navigator.clipboard.writeText(vulgar);
+		alert('Copied to Clipboard');
+		return vulgar;
+	}
+  
   return (
-    <button onClick={() => copy(vulgarOutput)}>
+    <button onClick={() => copyText(vulgarOutput)}>
       Copy to Clipboard
     </button>
   );
