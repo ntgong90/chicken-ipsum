@@ -1,11 +1,10 @@
 export const WordSelection = ({onSelectChange}:Readonly<{onSelectChange:Function}>) => {
-	//best practices?
   
-	//callback function passing props to parent
+	//correct handler/helper function
 	const handleChange = (event:any) => {
 			onSelectChange(event.target.value);
 		};
-		
+	
   return (
     <form id="dropDownForm">
         <label htmlFor='selectionDropDown' id="dropDownTitle">
