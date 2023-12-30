@@ -9,6 +9,7 @@ import "./App.css"; //import before or after component imports?
 import { Censor } from "./components/CensoredTitle";
 import { Checkbox } from "./components/CensoredCheckBox";
 
+
 //Main component - no added components
 function App() {
 

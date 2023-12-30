@@ -1,6 +1,13 @@
 /* Immport Google here */
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;1,6..12,300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+
+.underline{
+  text-decoration:underline;
+}
 
 :root {
   font-family:'Nunito Sans', sans-serif;
