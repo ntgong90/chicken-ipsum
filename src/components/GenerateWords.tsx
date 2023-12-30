@@ -1,4 +1,5 @@
 export const GenerateWords = ({randomWordSet, wordSelection, isCensored}:Readonly<{randomWordSet:Function, wordSelection:string, isCensored:boolean}>) => {
+	
   //Locally stored lists of words to randomly generate: one vulgar list, one censored list
   const vulgarWords = ['fuck you', 'bitch','cunt','motherfucker','shitstain','ogre','limpdick','gumby','paperhanded bitch','ass whipe', 'plonker'],
         censoredWords = ['f**k you', 'b**ch','cunt','motherf***er','sh**stain','ogre','limpd**k','gumby','paperhanded b**ch','a*s whipe', 'plonker'];

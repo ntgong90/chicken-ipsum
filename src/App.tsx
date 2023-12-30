@@ -57,8 +57,7 @@ function App() {
 							<GenerateWords 
 								randomWordSet={setVulgar} 
                 isCensored={censored}
-                wordSelection={selection}
-               />
+                wordSelection={selection}/>
 						</td>
 						<td>
 							<ClearText 
@@ -67,12 +66,13 @@ function App() {
 						</td>
 						<td>
 							<CopyToClipboard 
-
 								vulgarOutput={vulgar}/>
 						</td>
 					</tr>
 					<tr id="outputBox">
-						<td id="outputText">{vulgar}</td>
+						<td id="outputText">
+							{vulgar}
+						</td>
 					</tr>
 				</tbody>
       </table>
